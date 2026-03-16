@@ -1,0 +1,333 @@
+/* ===================================================
+   Execution Panel — bottom drawer
+   =================================================== */
+
+.execution-panel {
+  position: absolute;
+  bottom: 0;
+  left: var(--sidebar-width);
+  right: var(--config-panel-width);
+  z-index: 50;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  max-height: 40vh;
+}
+
+.execution-panel-expanded {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ─── Header ────────────────────────────────── */
+.execution-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  cursor: pointer;
+  user-select: none;
+  gap: 8px;
+  flex-shrink: 0;
+  transition: background var(--transition-fast);
+}
+
+.execution-panel-header:hover {
+  background: var(--bg-hover);
+}
+
+.execution-panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.execution-panel-title {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.execution-panel-header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+}
+
+.exec-header-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.exec-header-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ─── Badges ────────────────────────────────── */
+.exec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.exec-badge-idle {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+}
+
+.exec-badge-running {
+  background: var(--info-light);
+  color: var(--info);
+}
+
+.exec-badge-success {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.exec-badge-error {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.exec-spinner {
+  animation: exec-spin 1s linear infinite;
+}
+
+@keyframes exec-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Validation counts in header ───────────── */
+.exec-validation-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.exec-count-error {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--error);
+}
+
+.exec-count-warning {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--warning);
+}
+
+/* ─── Body ──────────────────────────────────── */
+.execution-panel-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-top: 1px solid var(--border-color);
+}
+
+/* ─── Tabs ──────────────────────────────────── */
+.exec-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 12px;
+  flex-shrink: 0;
+}
+
+.exec-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.exec-tab:hover {
+  color: var(--text-secondary);
+}
+
+.exec-tab-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.exec-tab-count {
+  font-size: 10px;
+  font-weight: 700;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  min-width: 18px;
+  text-align: center;
+}
+
+.exec-tab-active .exec-tab-count {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* ─── Content ───────────────────────────────── */
+.exec-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.exec-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  color: var(--text-muted);
+  gap: 6px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.exec-empty-sub {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* ─── Log entries ───────────────────────────── */
+.exec-logs {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exec-log-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-family: var(--font-mono);
+  transition: background var(--transition-fast);
+}
+
+.exec-log-entry:hover {
+  background: var(--bg-tertiary);
+}
+
+.exec-log-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.exec-log-success .exec-log-icon { color: var(--success); }
+.exec-log-failure .exec-log-icon { color: var(--error); }
+.exec-log-running .exec-log-icon { color: var(--info); }
+.exec-log-pending .exec-log-icon { color: var(--text-muted); }
+
+.exec-log-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.exec-log-message {
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.exec-log-time {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+/* ─── Validation items ──────────────────────── */
+.exec-validation {
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.exec-validation-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.exec-validation-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.exec-validation-error {
+  background: var(--error-light);
+}
+
+.exec-validation-error .exec-validation-icon {
+  color: var(--error);
+}
+
+.exec-validation-warning {
+  background: var(--warning-light);
+}
+
+.exec-validation-warning .exec-validation-icon {
+  color: var(--warning);
+}
+
+.exec-validation-msg {
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+@media (max-width: 980px) {
+  .execution-panel {
+    right: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .execution-panel {
+    left: var(--sidebar-width);
+    right: 0;
+    max-height: 48vh;
+  }
+
+  .execution-panel-title {
+    display: none;
+  }
+
+  .exec-validation-count {
+    gap: 5px;
+  }
+}

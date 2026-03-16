@@ -1,0 +1,83 @@
+/* ===================================================
+   Context Menu — floating right-click menu
+   =================================================== */
+
+.context-menu {
+  position: fixed;
+  z-index: 1000;
+  min-width: 180px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  box-shadow: var(--shadow-lg);
+  animation: ctx-fade-in 100ms ease;
+}
+
+@keyframes ctx-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+  text-align: left;
+  cursor: pointer;
+}
+
+.context-menu-item:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+.context-menu-icon {
+  display: flex;
+  align-items: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.context-menu-item:hover:not(:disabled) .context-menu-icon {
+  color: var(--text-secondary);
+}
+
+.context-menu-label {
+  flex: 1;
+}
+
+.context-menu-shortcut {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  margin-left: auto;
+}
+
+/* ─── Danger ────────────────────────────────── */
+.context-menu-danger:hover:not(:disabled) {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.context-menu-danger:hover:not(:disabled) .context-menu-icon {
+  color: var(--error);
+}
+
+/* ─── Disabled ──────────────────────────────── */
+.context-menu-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

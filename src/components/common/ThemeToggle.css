@@ -1,0 +1,52 @@
+.theme-toggle {
+  padding: 4px;
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-hover);
+}
+
+.theme-toggle-track {
+  width: 48px;
+  height: 26px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  position: relative;
+  transition: background var(--transition-normal);
+  border: 1px solid var(--border-color);
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.theme-toggle-sun {
+  left: 5px;
+}
+
+.theme-toggle-moon {
+  right: 5px;
+}
+
+.theme-toggle-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-thumb.dark {
+  transform: translateX(22px);
+}

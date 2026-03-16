@@ -1,0 +1,49 @@
+/* ===================================================
+   WorkflowEdge — Styles
+   =================================================== */
+
+.workflow-edge-group {
+  cursor: pointer;
+}
+
+.workflow-edge-path {
+  stroke: var(--text-muted);
+  transition: stroke var(--transition-fast);
+}
+
+.workflow-edge-group:hover .workflow-edge-path {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+}
+
+/* ─── Delete button ─────────────────────────── */
+.workflow-edge-delete-wrapper {
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.workflow-edge-group:hover .workflow-edge-delete-wrapper {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.workflow-edge-delete-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--error);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--bg-primary);
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.workflow-edge-delete-btn:hover {
+  transform: scale(1.2);
+}
