@@ -1,0 +1,36 @@
+.otp-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.otp-input {
+  width: 3rem;
+  height: 3.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #f8fafc;
+  transition: all 0.3s ease;
+  outline: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.otp-input:focus {
+  border-color: #6366f1;
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 400px) {
+  .otp-input {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+}

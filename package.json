@@ -11,10 +11,11 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "lucide-react": "^0.454.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "zustand": "^4.5.5",
-    "lucide-react": "^0.454.0"
+    "react-router-dom": "^7.13.2",
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",
