@@ -25,4 +25,9 @@ const otpSchema = new Schema<IOTP>(
 // TTL index to automatically delete expired OTPs
 otpSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
+// Indexes for fast lookups
+otpSchema.index({ email: 1 });
+otpSchema.index({ phone: 1 });
+otpSchema.index({ userId: 1 });
+
 export default mongoose.model<IOTP>('OTP', otpSchema);

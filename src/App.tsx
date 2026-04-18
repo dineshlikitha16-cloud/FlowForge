@@ -1,17 +1,19 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, Suspense, lazy } from 'react';
 import { useThemeStore } from './store/themeStore';
 import { useWorkflowStore } from './store/workflowStore';
 import { loadWorkflowFromStorage, saveWorkflowToStorage } from './utils/workflowIO';
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import Header from './components/layout/Header';
-import Sidebar from './components/layout/Sidebar';
-import Canvas from './components/layout/Canvas';
-import ConfigPanel from './components/layout/ConfigPanel';
-import ExecutionPanel from './components/layout/ExecutionPanel';
-import ContextMenu from './components/common/ContextMenu';
+
+const Sidebar = lazy(() => import('./components/layout/Sidebar'));
+const Canvas = lazy(() => import('./components/layout/Canvas'));
+const ConfigPanel = lazy(() => import('./components/layout/ConfigPanel'));
+const ExecutionPanel = lazy(() => import('./components/layout/ExecutionPanel'));
+const ContextMenu = lazy(() => import('./components/common/ContextMenu'));
+const CommandPalette = lazy(() => import('./components/common/CommandPalette'));
+const PresetsModal = lazy(() => import('./components/common/PresetsModal'));
+
 import ToastContainer from './components/common/Toast';
-import CommandPalette from './components/common/CommandPalette';
-import PresetsModal from './components/common/PresetsModal';
 import './App.css';
 
 const App = () => {
@@ -63,16 +65,18 @@ const App = () => {
   return (
     <div className="app">
       <Header onOpenPresets={openPresets} onOpenCommandPalette={openCommandPalette} />
-      <div className="app-body">
-        <Sidebar />
-        <Canvas />
-        <ConfigPanel />
-        <ExecutionPanel />
-      </div>
-      <ContextMenu />
+      <Suspense fallback={<div className="loading-fallback">Loading engine...</div>}>
+        <div className="app-body">
+          <Sidebar />
+          <Canvas />
+          <ConfigPanel />
+          <ExecutionPanel />
+        </div>
+        <ContextMenu />
+        <CommandPalette open={commandPaletteOpen} onClose={closeCommandPalette} />
+        <PresetsModal open={presetsOpen} onClose={closePresets} />
+      </Suspense>
       <ToastContainer />
-      <CommandPalette open={commandPaletteOpen} onClose={closeCommandPalette} />
-      <PresetsModal open={presetsOpen} onClose={closePresets} />
     </div>
   );
 };
